@@ -31,6 +31,7 @@
     "apollo-server-express": "^2.25.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
+    "datasource-sql": "^1.4.1",
     "express": "^4.17.1",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.5",
