@@ -1,12 +1,14 @@
-const players = [
-  { id: '1', name: 'Hello', team: 'RED' },
-  { id: '2', name: 'Hello', team: 'BLUE' },
-];
-
 const resolvers = {
   Query: {
-    players: () => {
-      return players;
+    players: async (parent: any, args: any, { dataSources }: { dataSources: any }, info: any) => {
+      const players = await dataSources.leaderboardSQLDb.getPlayers();
+      return players.map((player: any) => {
+        return {
+          id: player.player_id,
+          name: player.codename,
+          team: player.team === 0 ? 'RED' : 'BLUE',
+        };
+      });
     },
   },
 };
