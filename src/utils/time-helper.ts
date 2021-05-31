@@ -12,4 +12,10 @@ const getEpochTimeInJan2021 = (day: string, hourMinSec: string) => {
   return timestamp.unix();
 };
 
-export { getTimestampStringInJan2021, getEpochTimeInJan2021 };
+const mockCurrentTimeInJan2021 = () => {
+  const day = moment().format('DD');
+  const hourMinSec = moment().format('HH:mm:ss');
+  return getEpochTimeInJan2021(day, hourMinSec);
+};
+
+export { getTimestampStringInJan2021, getEpochTimeInJan2021, mockCurrentTimeInJan2021 };
