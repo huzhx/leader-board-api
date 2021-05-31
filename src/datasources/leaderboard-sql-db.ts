@@ -9,6 +9,12 @@ class LeaderboardSQLDb extends SQLDataSource {
   getPlayers() {
     return this.knex.select('*').from('players').cache(MINUTE);
   }
+  getPalyersActivitiesForLastHour(currentTime: number) {
+    return this.knex
+      .select('*')
+      .from('player_activities')
+      .whereBetween('hour_timestamp', [currentTime - 3600, currentTime]);
+  }
 }
 
 export default LeaderboardSQLDb;
