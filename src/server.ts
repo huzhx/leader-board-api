@@ -16,6 +16,8 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
+app.use(cors(corsOptions));
+
 const knexConfig = {
   client: 'pg',
   connection: {
@@ -33,7 +35,7 @@ const dataSources = () => ({
 
 const server = new ApolloServer({ typeDefs, resolvers, dataSources, introspection: true, playground: true });
 
-server.applyMiddleware({ app, path: '/graphql', cors: corsOptions });
+server.applyMiddleware({ app, path: '/graphql', cors: false });
 
 const httpServer = createServer(app);
 httpServer.listen({ port: PORT }, () => {
