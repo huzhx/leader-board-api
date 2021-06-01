@@ -9,6 +9,7 @@
     "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
     "start": "node 'dist/server.js'",
     "build": "tsc -p . && ncp src dist",
+    "tsc": "tsc",
     "test": "jest",
     "test:watch": "jest --verbose --detectOpenHandles"
   },
