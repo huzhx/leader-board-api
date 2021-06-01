@@ -9,7 +9,11 @@ import LeaderboardSQLDb from './datasources/leaderboard-sql-db';
 
 const PORT = process.env.PORT || 4000;
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 const knexConfig = {
   client: 'pg',
@@ -28,7 +32,8 @@ const dataSources = () => ({
 
 const server = new ApolloServer({ typeDefs, resolvers, dataSources, introspection: true, playground: true });
 
-server.applyMiddleware({ app, path: '/graphql' });
+server.applyMiddleware({ app, path: '/graphql', cors: corsOptions });
+
 const httpServer = createServer(app);
 httpServer.listen({ port: PORT }, () => {
   console.log(`
