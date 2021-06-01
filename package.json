@@ -29,6 +29,7 @@
   "dependencies": {
     "apollo-server-express": "^2.25.0",
     "compression": "^1.7.4",
+    "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "datasource-sql": "^1.4.1",
     "dotenv": "^10.0.0",
@@ -40,6 +41,7 @@
     "moment": "^2.29.1",
     "ncp": "^2.0.0",
     "pg": "^8.6.0",
+    "tsc": "^2.0.3",
     "typescript": "^4.3.2"
   }
 }
