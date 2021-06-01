@@ -9,6 +9,12 @@ import LeaderboardSQLDb from './datasources/leaderboard-sql-db';
 
 const PORT = process.env.PORT || 4000;
 const app = express();
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 const corsOptions = {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
