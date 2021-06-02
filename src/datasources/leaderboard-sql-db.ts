@@ -10,11 +10,14 @@ class LeaderboardSQLDb extends SQLDataSource {
     return this.knex.select('*').from('players').cache(MINUTE);
   }
   async getPalyersActivitiesForLastHour(currentTime: number) {
-    await this.knex.destroy();
-    return this.knex
-      .select('*')
-      .from('player_activities')
-      .whereBetween('hour_timestamp', [currentTime - 3600, currentTime]);
+    try {
+      return this.knex
+        .select('*')
+        .from('player_activities')
+        .whereBetween('hour_timestamp', [currentTime - 3600, currentTime]);
+    } catch (err) {
+      this.knex.destroy();
+    }
   }
 }
 
