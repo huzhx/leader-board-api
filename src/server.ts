@@ -33,6 +33,7 @@ const knexConfig = {
     database: process.env.PG_DB!,
     ssl: { rejectUnauthorized: false },
   },
+  pool: { min: 0, max: 20 },
 };
 
 const dataSources = () => ({

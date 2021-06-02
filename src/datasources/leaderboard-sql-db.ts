@@ -9,7 +9,8 @@ class LeaderboardSQLDb extends SQLDataSource {
   getPlayers() {
     return this.knex.select('*').from('players').cache(MINUTE);
   }
-  getPalyersActivitiesForLastHour(currentTime: number) {
+  async getPalyersActivitiesForLastHour(currentTime: number) {
+    await this.knex.destroy();
     return this.knex
       .select('*')
       .from('player_activities')
